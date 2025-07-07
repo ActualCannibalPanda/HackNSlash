@@ -13,6 +13,12 @@ function Scene:addObject(obj)
     table.insert(self.objects, obj)
 end
 
+function Scene:addObjects(...)
+    for _, obj in pairs({ ... }) do
+        table.insert(self.objects, obj)
+    end
+end
+
 function Scene:init()
 end
 

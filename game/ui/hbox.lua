@@ -21,6 +21,12 @@ function HBox:addObject(o)
     table.insert(self.objects, o)
 end
 
+function HBox:addObjects(...)
+    for _, obj in pairs({ ... }) do
+        table.insert(self.objects, obj)
+    end
+end
+
 function HBox:update(dt)
 end
 

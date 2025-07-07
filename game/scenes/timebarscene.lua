@@ -31,12 +31,11 @@ local scene_update = Scene.update
 
 function Scene:init()
     scene_init(self)
-    self:addObject(TimeBar)
-    ActionMenu:addObject(UI.Label:new { text = "Option A" })
-    ActionMenu:addObject(UI.Label:new { text = "Option B" })
-    BottomBar:addObject(ActionMenu)
-    BottomBar:addObject(HealthBarArea)
-    self:addObject(BottomBar)
+    ActionMenu:addObjects(
+        UI.Label:new { text = "Option A" },
+        UI.Label:new { text = "Option B" })
+    BottomBar:addObjects(ActionMenu, HealthBarArea)
+    self:addObjects(TimeBar, BottomBar)
 end
 
 function Scene:update(dt)
