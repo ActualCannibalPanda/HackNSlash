@@ -10,6 +10,11 @@ local function observer(correct)
     end
 end
 
+local UI = require("game.ui")
+local width, height, flags = love.window.getMode()
+local ActionMenu = UI.VBox:new()
+local HealthBarArea = UI.Box:new { width = width - 100, color = { 0.1, 0.1, 0.5, 1.0 } }
+local BottomBar = UI.HBox:new({ x = 0, y = height - 100, width = width, height = 100, paddingLeft = 0, paddingTop = 0 })
 local TimeBar = require("game.ui.timebar"):new {
     x = 200,
     y = 200,
@@ -27,6 +32,11 @@ local scene_update = Scene.update
 function Scene:init()
     scene_init(self)
     self:addObject(TimeBar)
+    ActionMenu:addObject(UI.Label:new { text = "Option A" })
+    ActionMenu:addObject(UI.Label:new { text = "Option B" })
+    BottomBar:addObject(ActionMenu)
+    BottomBar:addObject(HealthBarArea)
+    self:addObject(BottomBar)
 end
 
 function Scene:update(dt)
