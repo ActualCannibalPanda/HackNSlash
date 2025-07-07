@@ -1,3 +1,5 @@
+local Utils = require("game.utils")
+
 local VBox = {
     x = 0,
     y = 0,
@@ -31,27 +33,25 @@ function VBox:update(dt)
 end
 
 function VBox:draw()
-    local r, g, b, a = love.graphics.getColor()
-
-    love.graphics.push()
-    love.graphics.translate(self.x, self.y)
-    love.graphics.setColor(self.color)
-    love.graphics.rectangle("fill", 0, 0, self.width, self.height)
-    local y = 0
-    for _, obj in pairs(self.objects) do
-        love.graphics.setColor(self.backgroundColor)
-        love.graphics.rectangle("fill", self.paddingTop, self.paddingLeft,
-            self.width - self.paddingLeft * 2,
-            self.height - self.paddingTop * 2)
-        love.graphics.push()
-        love.graphics.translate(self.paddingLeft, self.paddingTop)
-        obj:draw()
-        love.graphics.pop()
-        love.graphics.translate(0, obj.height)
-    end
-    love.graphics.pop()
-
-    love.graphics.setColor(r, g, b, a)
+    Utils.preserveColor(function()
+        Utils.draw(function()
+            love.graphics.translate(self.x, self.y)
+            love.graphics.setColor(self.color)
+            love.graphics.rectangle("fill", 0, 0, self.width, self.height)
+            local y = 0
+            for _, obj in pairs(self.objects) do
+                love.graphics.setColor(self.backgroundColor)
+                love.graphics.rectangle("fill", self.paddingTop, self.paddingLeft,
+                    self.width - self.paddingLeft * 2,
+                    self.height - self.paddingTop * 2)
+                love.graphics.push()
+                love.graphics.translate(self.paddingLeft, self.paddingTop)
+                obj:draw()
+                love.graphics.pop()
+                love.graphics.translate(0, obj.height)
+            end
+        end)
+    end)
 end
 
 return VBox
