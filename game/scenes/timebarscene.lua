@@ -1,4 +1,8 @@
 local Scene = require("game.scene"):new()
+local Map = require("game.map").Map
+local ExampleMap = Map:new {
+    tiles = require("game.maps.examplemap")
+}
 
 local wasCorrect = nil
 
@@ -35,7 +39,7 @@ function Scene:init()
         UI.Label:new { text = "Option A" },
         UI.Label:new { text = "Option B" })
     BottomBar:addObjects(ActionMenu, HealthBarArea)
-    self:addObjects(TimeBar, BottomBar)
+    self:addObjects(TimeBar, BottomBar, ExampleMap)
 end
 
 function Scene:update(dt)
