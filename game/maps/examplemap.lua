@@ -3,7 +3,7 @@ local map = {}
 
 for y = 1, 11, 1 do
     for x = 1, 11, 1 do
-        table.insert(map, Tile:new {
+        table.insert(map, Tile {
             x = x,
             y = y,
             size = 10,

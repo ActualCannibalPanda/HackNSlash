@@ -1,19 +1,13 @@
+local Class = require("lua.objects.class")
 local Utils = require("game.utils")
 
-local Box = {
+local Box = Class({
     x = 0,
     y = 0,
     width = 100,
     height = 100,
     color = { 0.4, 0.4, 0.9, 0.9 }
-}
-
-function Box:new(o)
-    o = o or {}
-    setmetatable(o, self)
-    self.__index = self
-    return o
-end
+})
 
 function Box:update(dt)
 end

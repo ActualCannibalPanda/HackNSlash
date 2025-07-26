@@ -1,8 +1,8 @@
-local Scene = require("game.scene"):new()
+local Scene = require("game.scene")()
 local Map = require("game.map").Map
-local ExampleMap = Map:new {
+local ExampleMap = Map({
     tiles = require("game.maps.examplemap")
-}
+})
 
 local wasCorrect = nil
 
@@ -16,10 +16,10 @@ end
 
 local UI = require("game.ui")
 local width, height, flags = love.window.getMode()
-local ActionMenu = UI.VBox:new()
-local HealthBarArea = UI.Box:new { width = width - 100, color = { 0.1, 0.1, 0.5, 1.0 } }
-local BottomBar = UI.HBox:new({ x = 0, y = height - 100, width = width, height = 100, paddingLeft = 0, paddingTop = 0 })
-local TimeBar = require("game.ui.timebar"):new {
+local ActionMenu = UI.VBox()
+local HealthBarArea = UI.Box { width = width - 100, color = { 0.1, 0.1, 0.5, 1.0 } }
+local BottomBar = UI.HBox { x = 0, y = height - 100, width = width, height = 100, paddingLeft = 0, paddingTop = 0 }
+local TimeBar = require("game.ui.timebar") {
     x = 200,
     y = 200,
     current = 50,

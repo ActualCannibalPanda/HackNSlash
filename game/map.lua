@@ -1,32 +1,20 @@
+local Class = require("lua.objects.class")
 local Utils = require("game.utils")
-local Tile = {
+local Tile = Class({
     x = 0,
     y = 0,
     size = 10,
     data = {},
-}
-local Map = {
+})
+
+local Map = Class({
     x = 0,
     y = 0,
     width = 10,
     height = 10,
     tileSize = 10,
     tiles = {}
-}
-
-function Tile:new(o)
-    o = o or {}
-    setmetatable(o, self)
-    self.__index = self
-    return o
-end
-
-function Map:new(o)
-    o = o or {}
-    setmetatable(o, self)
-    self.__index = self
-    return o
-end
+})
 
 function Map:update(dt)
 end

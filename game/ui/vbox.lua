@@ -1,6 +1,7 @@
+local Class = require("lua.objects.class")
 local Utils = require("game.utils")
 
-local VBox = {
+local VBox = Class({
     x = 0,
     y = 0,
     width = 100,
@@ -10,14 +11,7 @@ local VBox = {
     color = { 0.4, 0.4, 0.9, 0.9 },
     backgroundColor = { 0.2, 0.2, 0.9, 0.9 },
     objects = {}
-}
-
-function VBox:new(o)
-    o = o or {}
-    setmetatable(o, self)
-    self.__index = self
-    return o
-end
+})
 
 function VBox:addObject(o)
     table.insert(self.objects, o)

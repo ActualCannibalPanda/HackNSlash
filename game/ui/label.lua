@@ -1,6 +1,7 @@
+local Class = require("lua.objects.class")
 local Utils = require("game.utils")
 
-local Label = {
+local Label = Class({
     x = 0,
     y = 0,
     width = 20,
@@ -8,14 +9,7 @@ local Label = {
     color = { 0.9, 0.9, 0.9, 1.0 },
     text = "@",
     fontSize = 16
-}
-
-function Label:new(o)
-    o = o or {}
-    setmetatable(o, self)
-    self.__index = self
-    return o
-end
+})
 
 function Label:update(dt)
 end

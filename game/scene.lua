@@ -1,20 +1,14 @@
-local Scene = {
+local Class = require("lua.objects.class")
+local Scene = Class({
     objects = {},
-}
-
-function Scene:new(o)
-    o = o or {}
-    setmetatable(o, self)
-    self.__index = self
-    return o
-end
+})
 
 function Scene:addObject(obj)
     table.insert(self.objects, obj)
 end
 
 function Scene:addObjects(...)
-    for _, obj in pairs({ ... }) do
+    for _, obj in ipairs({ ... }) do
         table.insert(self.objects, obj)
     end
 end

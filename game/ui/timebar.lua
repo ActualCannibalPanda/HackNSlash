@@ -1,6 +1,7 @@
+local Class = require("lua.objects.class")
 local Utils = require("game.utils")
 
-local TimeBar = {
+local TimeBar = Class({
     x = 100,
     y = 100,
     width = 100,
@@ -17,14 +18,7 @@ local TimeBar = {
     targetColor = { 0.9, 0.9, 0.2, 0.8 },
     hitAt = -1,
     observer = nil
-}
-
-function TimeBar:new(o)
-    o = o or {}
-    setmetatable(o, self)
-    self.__index = self
-    return o
-end
+})
 
 function TimeBar:update(dt)
     self.current = self.current + 1
