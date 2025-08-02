@@ -1,4 +1,4 @@
-local MainScene = require("game.scenes.timebarscene")
+local MainScene = require("game.scenes.timecirclescene")
 
 function love.load()
     MainScene:init()
